@@ -1,6 +1,7 @@
 package br.com.haniel.biblioteca.controller;
 
 import br.com.haniel.biblioteca.domains.Agenda;
+import br.com.haniel.biblioteca.dtos.AgendaResponse;
 import br.com.haniel.biblioteca.service.AgendaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,5 +21,11 @@ public class AgendaController {
     @ResponseStatus(HttpStatus.OK)
     public List<Agenda> buscarAgendamentosPorLivroID(@PathVariable UUID id){
         return agendaService.buscarAgendamentosPorLivroId(id);
+    }
+
+    @GetMapping("/detalhes/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public AgendaResponse buscarAgendamentoPorID(@PathVariable UUID id){
+        return agendaService.buscarAgendamentoPorId(id);
     }
 }
